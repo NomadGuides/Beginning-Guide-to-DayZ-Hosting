@@ -12,4 +12,4 @@ Category: The category of an item. Effects on how and where the item spawns. (We
 Usage: The group in which area an item will spawn. (Farm, Industrial, Medic, Hunting, ect.)
 Value: The value group of an item. Effects on how and where the item spawns. (Tier1, Tier2, Tier3, ect.)
 
-Useful Tool for Setting up your types files: https://github.com/Ninjin89/Types-to-Expansion-Market-Converter-UI/tree/main
+Useful Tool for Setting up your types files: https://github.com/Ninjin89/Types-to-Expansion-Market-Converter-UI.git
