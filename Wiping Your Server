@@ -1,0 +1,9 @@
+WIPING THE SERVER:
+
+Delete players.db file if you only want to remove player data:
+
+Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1\players.db
+
+Delete storage_1 folder to wipe the server clean:
+
+Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1
