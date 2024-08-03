@@ -1,4 +1,3 @@
-```markdown
 # How-To Modify Your DayZ SA Server
 
 If you’re going to modify your DayZ SA server, you should be able to:
@@ -93,4 +92,3 @@ There are items noted that spawn and can be generally held in your hands, thrown
     - [DayZ Types Pro](http://dayztypes.pro/) – for `types.xml` (offline).
     - [XML Validation](https://www.xmlvalidation.com/) – for any XML file (syntax only).
   - The vanilla files can be downloaded from Steam or from [here](https://github.com/BohemiaInteractive/DayZ-Central-Economy).
-```
