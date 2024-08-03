@@ -1,5 +1,3 @@
-Here's the Markdown version detailing folder and file locations for DayZ SA:
-
 ```markdown
 # Folder and File Locations for DayZ SA Server
 
@@ -39,5 +37,3 @@ Here are the key locations for various folders and files related to your DayZ SA
   Steam\steamapps\common\DayZServer\ServerProfiles
   ```
 ```
-
-This Markdown guide provides clear paths to the critical files and folders needed for managing your DayZ SA server. Adjust as necessary based on your specific setup or server configurations.
