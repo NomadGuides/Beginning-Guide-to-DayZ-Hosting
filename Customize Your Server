@@ -1,0 +1,88 @@
+If you’re going to modify your own DayZ SA server, you should be able to:
+
+    find your way around a windows directory structure
+    find/edit various configuration files (mostly XML & JSON)
+
+I’ll assume that you’ve either read How-To Create A DayZ SA Server or you’ve rented one from a GSP. I also suggest reading How-To Add Mods To A DayZ SA Server.
+
+Without coding or creating a STEAM workshop mod (PC-only), a number of features of DayZ can be modified such as:
+
+    the Central Loot Economy(CLE)/loot table items, spawn amounts, locations and rarity
+    dynamic events like vehicles, infected, animals, heli crashes and contaminated areas
+    hit direction indicator
+    base building conditions and damage
+    map additions (easier with a PC, but can be loaded on console)  
+    lighting, stamina and more!
+
+For this discussion I’ll define :
+
+    <server_root> as the base directory for all your server files. Typically this is where DayZServer_x64.exe, serverDZ.cfg, the mpmissions directory and other files/directories are located.
+        On a GSP, <server_root> is most likely the root directory where you login via FTP or some control panel file manager.
+    <server_profile> as the subdirectory of <server_root> that contains the main DayZ log file (DayZServer_x64*.RPT) and is specified on the command line as -profiles
+    <server_mission> as a subdirectory under <server_root> that contains the mission files for the particular map you are using.
+        For example the mapname for Chernarus is “chernarusplus” and Livonia is “enoch”
+        <server_mission> is located in <server_root>\mpmissions\dayzOffline.<mapname>
+
+XML CONFIG FILES
+
+The most typical files to edit when you are tweaking your server or adding mods are:
+
+    types.xml (loot table) 
+    cfgspawnabletypes.xml (attachments + cargo) for items, vehicles and infected
+    events.xml (dynamic events) for spawning vehicles, infected, crashes and more
+    cfgeventspawns.xml (event coordinates) for events
+
+Previously you needed to edit the vanilla files directly. This method still works but is more prone to typos and makes debugging much harder.
+
+The new method involves creating a subdirectory of  <server_mission> and including your changes in cfgeconomycore.xml. The BI wiki page : https://community.bistudio.com/wiki/DayZ:Central_Economy_mission_files_modding
+
+    Create the directory <server_mission>\custom
+    Edit cfgeconomycore.xml and add your changes before the closing tag (</economycore>) like this: 
+
+<ce folder="custom">
+   <file name="types_custom.xml" type="types" />
+   <file name="cfgspawnabletypes_custom.xml" type="spawnabletypes" />
+   <file name="events_custom.xml" type="events" />
+   <file name="globals_custom.xml" type="globals" />
+</ce> 
+
+        for each of the changes you want to make to a vanilla setting, copy the original into your custom file and make the changes. Although the documentation suggests you don’t need to include all the attributes I’ve found its safer to do so.
+        each of the files MUST be a syntactically correct, well-formed XML file with open and close tags. Look at the original files to see the format.
+        If  you are adding config file from mods, change “custom” above to be the modname and make multiple entries. That way you have a single file per purpose, per mod. When a mod changes and adds new items, your changes are limited to those files.
+    Unfortunately, this method does not include all the files you might modify such as cfgeventspawns.xml, cfgrandompresets.xml, cfgeventgroups.xml, cfgeffectarea.json, cfggameplay.json, env\*_territory.xml and other files so you’ll have to edit them directly and merge changes for reach release.
+
+For a longer explanation of the XML & JSON configuration files, read DayZ SA Server Mission Files.
+POPULAR LOOT TABLE (TYPES.XML) CHANGES
+
+    Increase the value of <nominal> (basically max) to have more of an item spawned at once. Caution: there is a balance and max items the server can handle.
+    Change the in_hoarder attribute of the <flags> tag 0 so that item max doesn’t count buried/stashed items (this attribute is not used much anymore in the vanilla server configs).
+    Reduce the <lifetime> value of the item named “UndergroundStash” to make buried crates/chests/bags despawn quicker.
+    To affect heli crash loot, change the deloot (dynamic event) attribute of the <flags> tag (1=spawns at heli crashes and convoys)
+    Change or add a <usage> tag (Military, Police, Hunting, Village, Farm, Industrial, Medic, Town, Coast, Firefighter, School, Office, Prison, ContaminatedArea, SeasonalEvent, Unique)
+    Change or add to a <value> tag (Tier1 , Tier1, Tier2, Tier3, Tier4)
+
+POPULAR DYNAMIC EVENTS (EVENTS.XML) CHANGES
+
+    Increase the number of Military Convoys or Helicopter crashes by by increasing the <nominal> value in the event named “StaticMilitaryConvoy” or “StaticHeliCrash”, respectively.
+
+HIDDEN or UNUSED GAME ASSETS
+
+Some people have noticed that there are assets in the game files that don’t currently spawn. The reason is that most of the items aren’t functionally complete.
+Advertisement
+
+You can find some working items in types.xml already with nominal set to 0 such as the color variants of weapons and axes or seasonal event items. The weapons variants used to be craftable with spray paint. and there are seasonal event items for Christmas and other holidays. There are also 145 books that used to be readable, but probably aren’t due to copyright or something, but you can still add them for players to collect.
+
+    https://pastebin.com/s2DAYmX8 – Books types.xml entries you can add to your server.
+    https://pastebin.com/RwyxD7Nx – list of classnames of other unused items, some that spawn and some that are problematic.
+
+There are items noted that spawn and can be generally held in your hands, thrown, used as a melee or maybe even eaten. You’ll have to create full types.xml entries for these if you want to use them.
+
+The weapons marked as non-functional are, not surprisingly, NON-FUNCTIONAL.  !Use any of these NON-FUNCTIONAL items your own risk! If an item is not in the loot table, there is a reason. Some of these items will crash your server and some will get stuck in your hands. fyi: The RPG doesn’t work, the chainsaw is broken and the bows will get stuck in your hands as will the M249. 
+TROUBLESHOOTING
+
+    No loot or infected are spawning
+        Most likely a typo in an XML file.  Check your syntax and/or diff against  the vanilla files.
+            https://dzsa.tools/  – for types.xml
+            http://dayztypes.pro/ – for types.xml (offline)
+            https://codebeautify.org/xmlvalidator or https://www.xmlvalidation.com/ – for any XML file (syntax only)
+        The vanilla files can be downloaded from steam or from here: https://github.com/BohemiaInteractive/DayZ-Central-Economy
