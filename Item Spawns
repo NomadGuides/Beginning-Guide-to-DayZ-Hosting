@@ -1,0 +1,6 @@
+EDITING ITEM SPAWNS:
+To edit the amount of a select item that spawns on the map, you need to open up and edit your types.xml file. Once inside the file, you will notice various items within the game. Items will be listed alphabetically. Making changes to these values will have different effects. Here is a basis of what each line of an item does:
+
+
+
+Useful tool for editing item spawns here[dzsa.tools]
