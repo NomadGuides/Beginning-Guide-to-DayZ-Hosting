@@ -1,6 +1,15 @@
 EDITING ITEM SPAWNS:
 To edit the amount of a select item that spawns on the map, you need to open up and edit your types.xml file. Once inside the file, you will notice various items within the game. Items will be listed alphabetically. Making changes to these values will have different effects. Here is a basis of what each line of an item does:
 
+Nominal: How many of this item that can be on the map.
+Lifeitme: The lifetime of an item once it is spawned. (Time in seconds).
+Restock: The amount of time that will need to pass before an item is allowed to spawn again.
+Min: The minimum amount of an item that will spawn on the map.
+QuantMin:Dictates the minimum quantity of consumable within the item. Value=(-1.0%(empty) - 100.0%(full) how many bullets are in an Ammo box, or how much water is in a bottle)
+QuantMax:Dictates the maximum quantity of consumable within the item. Value=(-1.0%(empty) - 100.0%(full) how many bullets are in an Ammo box, or how much water is in a bottle)
+Cost: Determines the spawn chance of an item.
+Category: The category of an item. Effects on how and where the item spawns. (Weapons, Tools, Containers, Clothes, ect.)
+Usage: The group in which area an item will spawn. (Farm, Industrial, Medic, Hunting, ect.)
+Value: The value group of an item. Effects on how and where the item spawns. (Tier1, Tier2, Tier3, ect.)
 
-
-Useful tool for editing item spawns here[dzsa.tools]
+Useful Tool for Setting up your types files: https://github.com/Ninjin89/Types-to-Expansion-Market-Converter-UI/tree/main
