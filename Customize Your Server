@@ -3,7 +3,7 @@ If you’re going to modify your own DayZ SA server, you should be able to:
     find your way around a windows directory structure
     find/edit various configuration files (mostly XML & JSON)
 
-I’ll assume that you’ve either read How-To Create A DayZ SA Server
+I’ll assume that you’ve either read Setting Up Your Local Work Environment
 
 Without coding or creating a STEAM workshop mod (PC-only), a number of features of DayZ can be modified such as:
 
