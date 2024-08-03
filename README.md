@@ -16,7 +16,7 @@ Welcome to the Guide to DayZ Hosting! This guide is designed to help server owne
 1. **Preparation**: Gather all the necessary resources and set up your server environment.
 2. **Installation**: Follow the detailed instructions to install and configure your DayZ server.
 3. **Launch**: Start your server and ensure it's running correctly.
-4. Setting Up Your Local Work Environment
+4. [Setting Up Your Local Work Environment](https://github.com/Sk3tch725/Beginning-Guide-to-DayZ-Hosting/blob/main/Setting%20Up%20Your%20Local%20Work%20Environment)
 
 ## Managing Files
 
