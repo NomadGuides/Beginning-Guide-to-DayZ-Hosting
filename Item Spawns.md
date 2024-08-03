@@ -62,8 +62,3 @@ Here is a simplified example of how a typical item entry in `types.xml` might lo
     <Value>Tier2</Value>
 </Type>
 ```
-
-Feel free to adjust these values according to your preferences and server needs.
-```
-
-This Markdown guide provides a concise explanation of the `types.xml` attributes and includes a link to a useful tool for configuring item spawns. Adjust the details as needed for your documentation!
