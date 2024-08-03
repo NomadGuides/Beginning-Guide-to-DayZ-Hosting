@@ -1,0 +1,25 @@
+MOD INSTALLATION:
+Always test mods one by one as you add them to your server to make sure they are working properly, we'll use "BaseBuildingPlus" mod as the installation example since the process is pretty much the same for each mod. Don't forget to check notes on the workshop page for whichever mod you're installing for further info.
+
+1. Copy the @BaseBuildingPlus folder from !Workshop to your server folder.
+2. Copy .bikey file from the keys folder to your keys folder.
+3. Add mod "-mod=@BaseBuildingPlus" to your start.bat file launch parameters and to your server launch parameters in DayZ launcher.
+4. Merge types.xml provided in the info folder with your server types.xml file.
+5. For additional mod config edit the .json file for each mod in its respective folder, found in the ServerProfiles folder.
+6. Repeat the process for any additional mods you want to add to the server.
+
+NOTE: Some of the more advanced mods may require you to download dependencies in the form of other mods, 
+for example "Arma 2 Helicopters Remastered" mod will not work without "DayZ Expansion Vehicles" installed. 
+Always read the info provided by the mod creator no matter which mod you install to make sure you don't miss any additional important information that may be required to make the mod work properly on your server.
+
+LAUNCH PARAMETER EXAMPLE WITH MODS IN start.bat FILE:
+
+start "DayZ Server" /wait "DayZServer_x64.exe" -adminlog -netlog -freezecheck -showScriptErrors VerifySignatures=3; -profiles=ServerProfiles -config=serverDZ.cfg -port=2302 -dologs "-mod=@BaseBuildingPlus;@Breachingcharge;@CarCover"
+
+LAUNCH PARAMETER EXAMPLE WITH MODS IN DayZ LAUNCHER:
+
+"-mod=@BaseBuildingPlus;@Breachingcharge;@CarCover"
+
+UPDATING MODS:
+1. Replace the @BaseBuildingPlus (or whichever mod you are updating) folder in your server folder with the new one from !Workshop.
+2. Check the Change Notes on each mod you update for any instructions. For example you may need to update your types.xml file if any new items were added.
