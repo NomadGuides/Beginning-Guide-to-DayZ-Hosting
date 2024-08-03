@@ -1,9 +1,25 @@
-WIPING THE SERVER:
+```markdown
+# Wiping the DayZ SA Server
 
-Delete players.db file if you only want to remove player data:
+To wipe your DayZ SA server, you have two options depending on whether you want to remove just player data or completely reset the server:
 
-Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1\players.db
+## Remove Player Data Only
 
-Delete storage_1 folder to wipe the server clean:
+To delete only player data while keeping the server's state and other configurations, remove the `players.db` file:
 
-Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1
+- **`players.db` File:**
+  ```
+  Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1\players.db
+  ```
+
+## Wipe the Server Completely
+
+To perform a full wipe of the server, including all data and configurations, delete the entire `storage_1` folder:
+
+- **`storage_1` Folder:**
+  ```
+  Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1
+  ```
+```
+
+This guide outlines how to manage server data effectively based on your needs for either partial or complete wipes.
