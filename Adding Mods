@@ -5,33 +5,33 @@ I assume that you’ve read https://github.com/Sk3tch725/Beginning-Guide-to-DayZ
 
 For this discussion I’ll define :
 
-    <server_root> as the base directory for all your server files. Typically this is where DayZServer_x64.exe, serverDZ.cfg, the mpmissions directory and other files/directories are located.
-        If you have downloaded the server files via steam, by default, they will be in  c:\Program Files (x86)\Steam\steamapps\common\DayZServer
-        I suggest that you copy that directory to another location because steam will auto-update that location and overwrite any changes you have made.
-        On a GSP, <server_root> is most likely the root directory where you login via FTP or some control panel file manager.
-    <server_profile> as a subdirectory of <server_root> that contains the main DayZ log file (DayZServer_x64*.RPT) and is specified on the command line as -profiles
+<server_root> as the base directory for all your server files. Typically this is where DayZServer_x64.exe, serverDZ.cfg, the mpmissions directory and other files/directories are located.
+If you have downloaded the server files via steam, by default, they will be in  c:\Program Files (x86)\Steam\steamapps\common\DayZServer
+I suggest that you copy that directory to another location because steam will auto-update that location and overwrite any changes you have made.
+On a GSP, <server_root> is most likely the root directory where you login via FTP or some control panel file manager.
+<server_profile> as a subdirectory of <server_root> that contains the main DayZ log file (DayZServer_x64*.RPT) and is specified on the command line as -profiles
 
 FINDING/DOWNLOADING/INSTALLING MODS
 
-    Browse the Steam Workshop for DayZ (located at Steam -> Community -> Workshop -> DayZ) to find interesting mods for your server.  Subscribe to the ones that you want.
-        Alternatively, you can use STEAMCMD to download mods, but you’ll still need the publishedid. [todo: writeup a short STEAMCMD tutorial]
-    Locating mods on your local PC
-        If you want to find mods by ID
-            copy the <publishedid> of the mod. The URL shows id=<publishedid> when you are viewing the mod. fyi: It’s easier to see the id when using a browser as opposed to the steam app.
-                For example, the URL for the Trader Mod is https://steamcommunity.com/sharedfiles/filedetails/?id=1590841260 , so the <publishedid>is 1590841260
-            By default, mods will be located in c:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid>
-        If you want to find mods by Name
-            By default, mods are located via the shortcuts in C:\Program Files (x86)\Steam\steamapps\common\DayZ
+Browse the Steam Workshop for DayZ (located at Steam -> Community -> Workshop -> DayZ) to find interesting mods for your server.  Subscribe to the ones that you want.
+Alternatively, you can use STEAMCMD to download mods, but you’ll still need the publishedid. [todo: writeup a short STEAMCMD tutorial]
+Locating mods on your local PC
+If you want to find mods by ID
+copy the <publishedid> of the mod. The URL shows id=<publishedid> when you are viewing the mod. fyi: It’s easier to see the id when using a browser as opposed to the steam app.
+For example, the URL for the Trader Mod is https://steamcommunity.com/sharedfiles/filedetails/?id=1590841260 , so the <publishedid>is 1590841260
+By default, mods will be located in c:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid>
+If you want to find mods by Name
+By default, mods are located via the shortcuts in C:\Program Files (x86)\Steam\steamapps\common\DayZ
     
 Grab all the files from either
-        C:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid> (by ID)
-            open the meta.cpp file and locate the modname.
-        C:\Program Files (x86)\Steam\steamapps\common\DayZ\!Workshop\@<ModName> (by name)
-    Place those files in the server root in a directory like  @<modname> where <modname> is the name from the workshop or the name from meta.cpp. For example <server_root>\@Trader
-        fyi: The directory name can actually be anything, but putting the @ sign in front of the name groups them all at the top of the directory and using the <modname> instead of <publishedid> makes it easier to recognize the mods
-    find the mods key file (*.bikey) and copy it to <server_root>\keys
-        There is no set directory structure, so it may be in a directory within the mod named key or keys or similar.
-    Run the server via this command (replacing @mod1;@mod2;@mod3; with your mods)
+C:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid> (by ID)
+open the meta.cpp file and locate the modname.
+C:\Program Files (x86)\Steam\steamapps\common\DayZ\!Workshop\@<ModName> (by name)
+Place those files in the server root in a directory like  @<modname> where <modname> is the name from the workshop or the name from meta.cpp. For example <server_root>\@Trader
+fyi: The directory name can actually be anything, but putting the @ sign in front of the name groups them all at the top of the directory and using the <modname> instead of <publishedid> makes it easier to recognize the mods
+find the mods key file (*.bikey) and copy it to <server_root>\keys
+There is no set directory structure, so it may be in a directory within the mod named key or keys or similar.
+Run the server via this command (replacing @mod1;@mod2;@mod3; with your mods)
 
     "C:\Windows\System32\cmd.exe " /C start "DayZSA" C:\dayzserver\DayZServer_x64.exe -config=C:\dayzserver\serverDZ.cfg -port=2302 -profiles=C:\dayzserver\profile "-mod=@mod1;@mod2;@mod3;" -BEPath=C:\dayzserver\battleye -dologs -adminlog
 
