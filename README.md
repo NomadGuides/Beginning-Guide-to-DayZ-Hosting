@@ -23,7 +23,7 @@ Welcome to the Guide to DayZ Hosting! This guide is designed to help server owne
 1. **Configuration Files**: Understand how to access and modify your server's configuration files to customize your server settings.
 2. **Mod Management**: Learn how to add, remove, and update mods on your server to enhance gameplay.
 3. **Player Data Management**: Manage player data files to maintain a fair and enjoyable gaming environment.
-4. https://github.com/Sk3tch725/Beginning-Guide-to-DayZ-Hosting/blob/4ff5c6f6439405f6ee944346028566004078535d/Adding%20Mods
+4. Adding Mods
 
 ## Contributing
 
