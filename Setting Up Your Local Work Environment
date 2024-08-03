@@ -1,51 +1,88 @@
-DOWNLOAD DAYZ SERVER:
-BEFORE GETTING STARTED IT'S HIGHLY RECOMMENDED TO DOWNLOAD A TEXT EDITOR SUCH AS VSCode OR NOTEPAD++ AND OPEN YOUR SERVER FOLDER FROM HERE.
-THIS WILL MAKE THINGS MUCH EASIER WHEN EDITING FILES.
 
-1. Download DayZ Server from TOOLS in your Steam LIBRARY.
-2. Once the download has finished navigate to: Steam\steamapps\common\DayZServer
+How-To Create A Vanilla DayZ SA Server
 
-CREATE BATCH FILE:
-1. Create a start batch file. Right click and create a new textfile, rename it to start.bat
-2. Place start.bat file into your server folder: Steam\steamapps\common\DayZServer
-3. Right click on start.bat click edit, paste this data below into the file and click save.
+If you’re going to create your own DayZ SA Server on windows (vm or dedicated server), you should be able to:
+
+    find your way around a windows directory structure.
+    open ports on the windows firewall
+    open/forward ports on your router (if hosted locally)
+    create/run a simple batch(.BAT) file
+    find and edit various configuration files (mostly XML and JSON), when making configuration changes.
+
+I suggest reading How-To Add Mods To A DayZ SA Server and How-To Customize A DayZ SA Server.
+
+One nice thing about DayZ SA (I’ll just call it DayZ from now on) is that setting up a server is very easy. DayZ is self-contained and doesn’t require installation of an external database (unlike A2:DayZMod).
+SUPER QUICK NON-INSTALLATION
+
+    Download DayZ Server from Steam -> Library -> Tools
+        Bohemia does not require you to own a second copy or DayZ nor create another steam account to run a server.
+        Note that DayZ Server Experimental is a separate download and can be installed similarly
+    Edit C:\Program Files (x86)\Steam\steamapps\common\DayZServer\serverDZ.cfg (default location)
+        Change the hostname variable to the name of your server. Hostname is the name that shows up in the server browser. It can be a maximum of 63 characters long.
+            hostname=”MyServerName”;
+    Right click on DayZ Server->Properties, in the General tab, in Launch Options, add :
+        -config=serverDZ.cfg -profiles=profile
+    Press OK, then Close
+    If you want to login to this server from another PC or outside your network, then add INBOUND rules to the windows firewall and if needed, to the router to open and forward the following default ports
+        2302, 27016 (both UDP only)
+    Right click on DayZ Server -> Launch OR if you want to get fancy you can create a file called start_dayzserver.bat, paste the following block into it,  edit as necessary and then double-click on it to run.
 
 @echo off
 :start
-::Server name
-set serverName=My DayZ server
-::Server files location
-set serverLocation="C:\Program Files (x86)\Steam\steamapps\common\DayZServer"
-::Server Port
+::Server name [!EDIT THIS!]
+set serverName=EXAMPLE NAME
+::Server files location [DEFAULT !EDIT AS NEEDED!]
+set serverDirectory="C:\Program Files (x86)\Steam\steamapps\common\DayZServer"
+::Server Port [DEFAULT]
 set serverPort=2302
-::Server config
+::Server config [DEFAULT. hostname= in serverDZ.cfg is what shows in the steam server browser. !EDIT AS NEEDED!.]
 set serverConfig=serverDZ.cfg
+::Server profile location. logfiles are written here and mods are configured here [DEFAULT]
+set serverProfile=profile
 ::Logical CPU cores to use (Equal or less than available)
-set serverCPU=2
+set serverCPU=4
+::modlist should be of the form "-mod=@mod1;@mod2;@mod3;"
+set modList="-mod="
 ::Sets title for terminal (DONT edit)
 title %serverName% batch
 ::DayZServer location (DONT edit)
-cd "%serverLocation%"
+cd /D "%serverDirectory%"
+:: makes the profile directory if it doesn't already exist
+if not exist "%serverProfile%" ( 
+mkdir %serverProfile% > nul
+) 
 echo (%time%) %serverName% started.
 ::Launch parameters (edit end: -config=|-port=|-profiles=|-doLogs|-adminLog|-netLog|-freezeCheck|-filePatching|-BEpath=|-cpuCount=)
-start "DayZ Server" /min "DayZServer_x64.exe" -config=%serverConfig% -port=%serverPort% -cpuCount=%serverCPU% -dologs -adminlog -netlog -freezecheck
+start "DayZ Server" /min DayZServer_x64.exe -config=%serverConfig% -port=%serverPort% -profiles=%serverProfile% -BEpath=battleye %modList% -cpuCount=%serverCPU% -dologs -adminlog -netlog -freezecheck
+
 ::Time in seconds before kill server process (14400 = 4 hours)
-timeout 14390
+timeout 14400
 taskkill /im DayZServer_x64.exe /F
 ::Time in seconds to wait before..
 timeout 10
 ::Go back to the top and repeat the whole cycle again
 goto start
 
-NOTE: MAKE SURE serverLocation MATCHES THE SERVER FOLDER LOCATION ON YOUR PC.
+FULL INSTALLATION
 
-SERVER CONFIG:
-1. Copy & paste -config=serverDZ.cfg into your DayZ launch parameters.
-2. Open serverDZ.cfg and edit to your preferences such as server name,
-password to connect to the server, password to become a server admin, etc.
-3. Go into the battleye folder and create a file called BEServer_x64.cfg
-4. Add: RConPassword YOURPASSWORDHERE
-5. Change YOURPASSWORDHERE into your RCon password of choice. Save the file. Your RCon password is to see server chat, ban and kick.
-
-STARTING THE SERVER:
-Double click the start.bat file.
+    Download DayZ Server from Steam -> Library -> Tools
+        Note that DayZ Server Experimental is a separate download and can be installed similarly
+        By default, the files will be in  C:\Program Files (x86)\Steam\steamapps\common\DayZServer
+        Copy this directory to another location. Why? Because steam will auto-update for the next release in the original location and overwrite any changes you have made. For simplicity of this documentation, I will use C:\dayzserver\ and will call it <server_root>.
+    Set server configuration parameters by editing <server_root>\serverDZ.cfg
+        Change the hostname variable to the name of your server. Hostname is the name that shows up in the server browser. It can be a maximum of 63 characters long.
+            hostname=”MyServerName”;
+        Set a password if desired
+            password = “MyServerPassword”;
+        Set steamQueryport ONLY if needed due to a port conflict (usually not needed)
+            steamQueryPort = 27016; // default
+    If you are setting up RCON access, for tools such as BEC, BattleMetrics, Dart, CF, etc add hte RCON port by editing or creating <server_root>\battleye\BEServer_x64.cfg
+        Note: the filename may have extra characters appended if you’ve already run the server.
+        Any unused port can be used, but avoid gameport+2,3,4. Put the following text in that file.
+            RConPort 2322
+    Set game port on the command line using -port=<game_port>. 2302 is the default.
+        -port=2302
+    Add INBOUND rules to the windows firewall to allow gameport and steamqueryport (UDP) They are at 2302 & 27016 by default unless you’ve changed them.  If you are hosting locally, you’ll most likely need to forward the same ports in your router to the host pc.
+    Run the server via this command line or within a batch(.BAT) file
+        Command line params documentation  – https://community.bistudio.com/wiki/DayZ:Server_Configuration
+        Notice that the -mod, -profiles and -config commandline parameters are wrapped in double quotes. These are required if any of the directory names have spaces or special characters.
