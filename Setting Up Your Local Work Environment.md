@@ -1,8 +1,6 @@
 ```markdown
 # How-To Create A Vanilla DayZ SA Server
 
-If you find this guide helpful, please consider donating to [The Dead Return](https://discord.me/tdr). All donations go directly into the server's hosting account. For questions, contact me (@SkiGoggles) on [Discord](https://discord.me/tdr).
-
 ## Requirements
 
 To create your own DayZ SA Server on Windows (VM or dedicated server), you should be able to:
