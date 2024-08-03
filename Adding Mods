@@ -3,6 +3,7 @@ How-To Add Mods To A DayZ SA Server
 
 I assume that you’ve read https://github.com/Sk3tch725/Beginning-Guide-to-DayZ-Hosting/blob/main/Setting%20Up%20Your%20Local%20Work%20Environment
 
+
 For this discussion I’ll define :
 
     <server_root> as the base directory for all your server files. Typically this is where DayZServer_x64.exe, serverDZ.cfg, the mpmissions directory and other files/directories are located.
