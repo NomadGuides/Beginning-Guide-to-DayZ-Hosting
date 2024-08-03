@@ -1,0 +1,12 @@
+FOLDER AND FILE LOCATIONS:
+DayZServer FOLDER: Steam\steamapps\common\DayZServer
+
+!Workshop FOLDER: Steam\steamapps\common\DayZ\!Workshop
+
+Keys FOLDER: Steam\steamapps\common\DayZServer\keys
+
+serverDZ.cfg: Steam\steamapps\common\DayZServer
+
+types.xml: Steam\steamapps\common\DayZServer\mpmissions\dayzOffline.chernarusplus\db
+
+.json: Steam\steamapps\common\DayZServer\ServerProfiles
