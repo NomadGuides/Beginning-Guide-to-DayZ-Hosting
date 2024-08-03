@@ -7,8 +7,10 @@ I’ll assume that you’ve either read https://github.com/Sk3tch725/Beginning-G
 
 Without coding or creating a STEAM workshop mod (PC-only), a number of features of DayZ can be modified such as:
 
-    the Central Loot Economy(CLE)/loot table items, spawn amounts, locations and rarity
-    dynamic events like vehicles, infected, animals, heli crashes and contaminated areas
+    the Central Loot Economy(CLE)/loot table 
+    items, spawn amounts, locations and rarity
+    dynamic events like vehicles, 
+    infected, animals, heli crashes and contaminated areas
     hit direction indicator
     base building conditions and damage
     map additions (easier with a PC, but can be loaded on console)  
