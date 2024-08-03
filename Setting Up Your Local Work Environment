@@ -1,0 +1,51 @@
+DOWNLOAD DAYZ SERVER:
+BEFORE GETTING STARTED IT'S HIGHLY RECOMMENDED TO DOWNLOAD A TEXT EDITOR SUCH AS VSCode OR NOTEPAD++ AND OPEN YOUR SERVER FOLDER FROM HERE.
+THIS WILL MAKE THINGS MUCH EASIER WHEN EDITING FILES.
+
+1. Download DayZ Server from TOOLS in your Steam LIBRARY.
+2. Once the download has finished navigate to: Steam\steamapps\common\DayZServer
+
+CREATE BATCH FILE:
+1. Create a start batch file. Right click and create a new textfile, rename it to start.bat
+2. Place start.bat file into your server folder: Steam\steamapps\common\DayZServer
+3. Right click on start.bat click edit, paste this data below into the file and click save.
+
+@echo off
+:start
+::Server name
+set serverName=My DayZ server
+::Server files location
+set serverLocation="C:\Program Files (x86)\Steam\steamapps\common\DayZServer"
+::Server Port
+set serverPort=2302
+::Server config
+set serverConfig=serverDZ.cfg
+::Logical CPU cores to use (Equal or less than available)
+set serverCPU=2
+::Sets title for terminal (DONT edit)
+title %serverName% batch
+::DayZServer location (DONT edit)
+cd "%serverLocation%"
+echo (%time%) %serverName% started.
+::Launch parameters (edit end: -config=|-port=|-profiles=|-doLogs|-adminLog|-netLog|-freezeCheck|-filePatching|-BEpath=|-cpuCount=)
+start "DayZ Server" /min "DayZServer_x64.exe" -config=%serverConfig% -port=%serverPort% -cpuCount=%serverCPU% -dologs -adminlog -netlog -freezecheck
+::Time in seconds before kill server process (14400 = 4 hours)
+timeout 14390
+taskkill /im DayZServer_x64.exe /F
+::Time in seconds to wait before..
+timeout 10
+::Go back to the top and repeat the whole cycle again
+goto start
+
+NOTE: MAKE SURE serverLocation MATCHES THE SERVER FOLDER LOCATION ON YOUR PC.
+
+SERVER CONFIG:
+1. Copy & paste -config=serverDZ.cfg into your DayZ launch parameters.
+2. Open serverDZ.cfg and edit to your preferences such as server name,
+password to connect to the server, password to become a server admin, etc.
+3. Go into the battleye folder and create a file called BEServer_x64.cfg
+4. Add: RConPassword YOURPASSWORDHERE
+5. Change YOURPASSWORDHERE into your RCon password of choice. Save the file. Your RCon password is to see server chat, ban and kick.
+
+STARTING THE SERVER:
+Double click the start.bat file.
