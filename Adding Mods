@@ -1,25 +1,89 @@
-MOD INSTALLATION:
-Always test mods one by one as you add them to your server to make sure they are working properly, we'll use "BaseBuildingPlus" mod as the installation example since the process is pretty much the same for each mod. Don't forget to check notes on the workshop page for whichever mod you're installing for further info.
 
-1. Copy the @BaseBuildingPlus folder from !Workshop to your server folder.
-2. Copy .bikey file from the keys folder to your keys folder.
-3. Add mod "-mod=@BaseBuildingPlus" to your start.bat file launch parameters and to your server launch parameters in DayZ launcher.
-4. Merge types.xml provided in the info folder with your server types.xml file.
-5. For additional mod config edit the .json file for each mod in its respective folder, found in the ServerProfiles folder.
-6. Repeat the process for any additional mods you want to add to the server.
+How-To Add Mods To A DayZ SA Server
 
-NOTE: Some of the more advanced mods may require you to download dependencies in the form of other mods, 
-for example "Arma 2 Helicopters Remastered" mod will not work without "DayZ Expansion Vehicles" installed. 
-Always read the info provided by the mod creator no matter which mod you install to make sure you don't miss any additional important information that may be required to make the mod work properly on your server.
+I assume that you’ve read How-To Create A DayZ SA Server
 
-LAUNCH PARAMETER EXAMPLE WITH MODS IN start.bat FILE:
+For this discussion I’ll define :
 
-start "DayZ Server" /wait "DayZServer_x64.exe" -adminlog -netlog -freezecheck -showScriptErrors VerifySignatures=3; -profiles=ServerProfiles -config=serverDZ.cfg -port=2302 -dologs "-mod=@BaseBuildingPlus;@Breachingcharge;@CarCover"
+    <server_root> as the base directory for all your server files. Typically this is where DayZServer_x64.exe, serverDZ.cfg, the mpmissions directory and other files/directories are located.
+        If you have downloaded the server files via steam, by default, they will be in  c:\Program Files (x86)\Steam\steamapps\common\DayZServer
+        I suggest that you copy that directory to another location because steam will auto-update that location and overwrite any changes you have made.
+        On a GSP, <server_root> is most likely the root directory where you login via FTP or some control panel file manager.
+    <server_profile> as a subdirectory of <server_root> that contains the main DayZ log file (DayZServer_x64*.RPT) and is specified on the command line as -profiles
 
-LAUNCH PARAMETER EXAMPLE WITH MODS IN DayZ LAUNCHER:
+FINDING/DOWNLOADING/INSTALLING MODS
 
-"-mod=@BaseBuildingPlus;@Breachingcharge;@CarCover"
+    Browse the Steam Workshop for DayZ (located at Steam -> Community -> Workshop -> DayZ) to find interesting mods for your server.  Subscribe to the ones that you want.
+        Alternatively, you can use STEAMCMD to download mods, but you’ll still need the publishedid. [todo: writeup a short STEAMCMD tutorial]
+    Locating mods on your local PC
+        If you want to find mods by ID
+            copy the <publishedid> of the mod. The URL shows id=<publishedid> when you are viewing the mod. fyi: It’s easier to see the id when using a browser as opposed to the steam app.
+                For example, the URL for the Trader Mod is https://steamcommunity.com/sharedfiles/filedetails/?id=1590841260 , so the <publishedid>is 1590841260
+            By default, mods will be located in c:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid>
+        If you want to find mods by Name
+            By default, mods are located via the shortcuts in C:\Program Files (x86)\Steam\steamapps\common\DayZ
+    
+Grab all the files from either
+        C:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid> (by ID)
+            open the meta.cpp file and locate the modname.
+        C:\Program Files (x86)\Steam\steamapps\common\DayZ\!Workshop\@<ModName> (by name)
+    Place those files in the server root in a directory like  @<modname> where <modname> is the name from the workshop or the name from meta.cpp. For example <server_root>\@Trader
+        fyi: The directory name can actually be anything, but putting the @ sign in front of the name groups them all at the top of the directory and using the <modname> instead of <publishedid> makes it easier to recognize the mods
+    find the mods key file (*.bikey) and copy it to <server_root>\keys
+        There is no set directory structure, so it may be in a directory within the mod named key or keys or similar.
+    Run the server via this command (replacing @mod1;@mod2;@mod3; with your mods)
 
-UPDATING MODS:
-1. Replace the @BaseBuildingPlus (or whichever mod you are updating) folder in your server folder with the new one from !Workshop.
-2. Check the Change Notes on each mod you update for any instructions. For example you may need to update your types.xml file if any new items were added.
+    "C:\Windows\System32\cmd.exe " /C start "DayZSA" C:\dayzserver\DayZServer_x64.exe -config=C:\dayzserver\serverDZ.cfg -port=2302 -profiles=C:\dayzserver\profile "-mod=@mod1;@mod2;@mod3;" -BEPath=C:\dayzserver\battleye -dologs -adminlog
+
+        @mod1 and @mod2 are the directory names you created in the previous step.
+        Make sure to put dependencies first (@CF is a dependency for a number of mods and should be first, for example)
+        Make sure to put a semicolon between the mods
+        If any directory name(@<modname>) has spaces or special characters in it, you’ll need to wrap the whole thing in quotes like “mod=@mod1;@mod2;”  (so just do it anyway).
+
+CONFIGURING MODS
+
+For a complete discussion of the XML config files, read How-To Customize A DayZ SA Server and DayZ SA Server Mission Files. 
+Mods should include the following XML config files:
+
+    types.xml (loot table) if new items are added
+    cfgspawnabletypes.xml (attachments + cargo) for items and vehicles
+    events.xml (dynamic events) if spawning things like vehicles
+    cfgeventspawns.xml (event coordinates) for event locations
+
+You can create your own directory within <server_root>\mpmissions\dayzOffline.<mapname>\ and then follow the instructions at https://community.bistudio.com/wiki/DayZ:Central_Economy_mission_files_modding to include your changes into the server configuration.
+
+    Unfortunately, this method does not include cfgeventspawns.xml, so you’ll have to edit that file merge changes.
+    Make sure when you include your XML files that they are syntactically complete. Use the vanilla files as an example and make sure they have the correct beginning(xml start tags) and end to the files(xml close tag).
+
+Note: Prior to release 1.08 you were required to edit the core XML files and most mod directions still follow that format. That method is still valid, but using the include method mentioned in the wiki above makes the overall process simpler, less prone to errors and easier to debug.
+Advertisement
+
+Note: Unfortunately, there is no standard for providing these files. Files may be named anything (I’ve seen .XML,  .TXT and .C ) and may be located in the download package, linked in the workshop or sometimes not provided at all.  The XML config files may be XML fragments or a complete file and may be complete or not. Typically I see the types.xml files reasonably complete, but frequently I see the cfgeventspawns.xml file missing. 
+
+Even if a mod provides the XML config files, the amounts in the loot table or the events or the spawn locations may not match what you want for your server. Don’t forget to review them.
+
+If any of the XML config files are missing, you can still load the mods into the server and use an admin tool to locate the classnames, figure out attachments and create spawn coordinates if needed.
+Mods may have specific configuration files:
+
+    Mod config files go in <server_profile> or <server_profile>\<mod_name>
+    Mod sample config files may be located in the download package, in another location or may be generated on first run of the server with the mod. Refer to the mod documentation in the Steam workshop or a readme in the download package. 
+    Mod config files may be TXT, JSON or any other format. Make sure you follow the format and don’t create typos. Many mods do not handle errors well and don’t function or with invalid config files.
+    Mods may require client configuration (key bindings or map markers for example)
+
+TROUBLESHOOTING
+
+    Is the mod loaded on the server?
+        Double-check the command line. If using a GSP, the command line should be part of the control panel.
+        If you don’t know the command line, goto the <server_profile> directory and find the main DayZ log file (DayZServer_x64*.RPT) and open it. At the top of the file will be the exact command line used to launch the server.
+    Does the mod name on the command line (“-mod=@mod1;”) match the directory name of the mod in the <server_root> folder?
+    Did you copy the key (*.bikey) from the mod into the <server_root>\keys directory?
+    Did you add any necessary XML config files required by the mod?
+    Did you add any necessary mod-specific configuration files?
+    No loot or infected are spawning
+        Most likely a typo in an XML file
+            https://www.xmlvalidation.com/
+            https://dayz.skyn1.se/
+            http://dayztypes.pro/
+    Is the mod loaded on the client?
+        Did you using the in-game browser and join with the necessary mods automatically?
+        Did you use dayzsalauncher and have it join with the necessary mods automatically?
