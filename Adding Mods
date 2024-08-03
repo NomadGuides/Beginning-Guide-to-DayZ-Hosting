@@ -1,5 +1,3 @@
-
-
 ```markdown
 # How-To Add Mods To A DayZ SA Server
 
@@ -13,20 +11,20 @@ This guide assumes that you’ve read [Setting Up Your Local Work Environment](h
 ## Finding/Downloading/Installing Mods
 
 1. Browse the Steam Workshop for DayZ to find interesting mods for your server. Subscribe to the ones that you want.
-2. Alternatively, you can use STEAMCMD to download mods, but you’ll still need the publishedid. [todo: writeup a short STEAMCMD tutorial]
+2. Alternatively, you can use STEAMCMD to download mods, but you’ll still need the `publishedid`. [todo: write up a short STEAMCMD tutorial]
 3. Locating mods on your local PC:
-    - If you want to find mods by ID: copy the `<publishedid>` of the mod. The URL shows `id=<publishedid>` when you are viewing the mod. For example, the URL for the Trader Mod is `https://steamcommunity.com/sharedfiles/filedetails/?id=1590841260`, so the `<publishedid>` is `1590841260`.
+    - If you want to find mods by ID: Copy the `<publishedid>` of the mod. The URL shows `id=<publishedid>` when you are viewing the mod. For example, the URL for the Trader Mod is `https://steamcommunity.com/sharedfiles/filedetails/?id=1590841260`, so the `<publishedid>` is `1590841260`.
     - If you want to find mods by Name: By default, mods are located via the shortcuts in `C:\Program Files (x86)\Steam\steamapps\common\DayZ`.
 4. Grab all the files from either `C:\Program Files (x86)\Steam\steamapps\workshop\content\22100\<publishedid>` (by ID) or `C:\Program Files (x86)\Steam\steamapps\common\DayZ\!Workshop\@<ModName>` (by name).
-5. Place those files in the server root in a directory like `@<modname>` where `<modname>` is the name from the workshop or the name from `meta.cpp`. For example `<server_root>\@Trader`.
-6. Find the mods key file (`*.bikey`) and copy it to `<server_root>\keys`.
+5. Place those files in the server root in a directory like `@<modname>` where `<modname>` is the name from the workshop or the name from `meta.cpp`. For example, `<server_root>\@Trader`.
+6. Find the mod's key file (`*.bikey`) and copy it to `<server_root>\keys`.
 
 ## Running the Server
 
 Run the server via this command (replacing `@mod1;@mod2;@mod3;` with your mods):
 
 ```bash
-"C:\Windows\System32\cmd.exe " /C start "DayZSA" C:\dayzserver\DayZServer_x64.exe -config=C:\dayzserver\serverDZ.cfg -port=2302 -profiles=C:\dayzserver\profile "-mod=@mod1;@mod2;@mod3;" -BEPath=C:\dayzserver\battleye -dologs -adminlog
+"C:\Windows\System32\cmd.exe" /C start "DayZSA" C:\dayzserver\DayZServer_x64.exe -config=C:\dayzserver\serverDZ.cfg -port=2302 -profiles=C:\dayzserver\profile "-mod=@mod1;@mod2;@mod3;" -BEPath=C:\dayzserver\battleye -dologs -adminlog
 ```
 
 ## Configuring Mods
@@ -51,5 +49,7 @@ Mods should include the following XML config files:
     - [XML Validation](https://www.xmlvalidation.com/)
     - [DayZ Skyn1](https://dayz.skyn1.se/)
     - [DayZ Types Pro](http://dayztypes.pro/)
-- Is the mod loaded on the client? Did you using the in-game browser and join with the necessary mods automatically? Did you use dayzsalauncher and have it join with the necessary mods automatically?
+- Is the mod loaded on the client? Did you use the in-game browser and join with the necessary mods automatically? Did you use DayZ Launcher and have it join with the necessary mods automatically?
 ```
+
+Feel free to adjust any specific details or add additional information as needed.
