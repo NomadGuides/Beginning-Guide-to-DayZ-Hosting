@@ -1,0 +1,159 @@
+# Mirasaki Development Feedback Survey
+
+Thank you for taking the time to complete our survey! Your feedback will help us improve and develop services that better meet your needs. Please select the category that best describes your relationship with Mirasaki Development.
+
+## Which best describes you?
+- [ ] Long-Term Customer (multiple projects with Mirasaki Development)
+- [ ] Regular Customer (used our services more than once)
+- [ ] Interested Customer (considering using our services)
+
+---
+
+## General Questions (For All Customers)
+
+**1. Which services have you used or are interested in?**  
+*(Select all that apply)*
+- [ ] Editor / JSON Builds
+- [ ] Server Builds & Set-up
+- [ ] Custom Scripts and Mods
+- [ ] Custom Reskins
+- [ ] Discord Bots
+- [ ] Website Development
+- [ ] Monetization Services
+
+**2. How did you hear about Mirasaki Development?**
+- [ ] Social Media
+- [ ] Word of Mouth
+- [ ] Gaming Forums / Communities
+- [ ] Search Engines
+- [ ] Other (please specify)
+
+**3. How would you rate the communication and responsiveness of our team?**
+- [ ] Excellent
+- [ ] Good
+- [ ] Average
+- [ ] Poor
+
+**4. How satisfied are you with the quality of our services?**
+- [ ] Very Satisfied
+- [ ] Satisfied
+- [ ] Neutral
+- [ ] Dissatisfied
+
+**5. How likely are you to recommend Mirasaki Development to others?**
+- [ ] Very Likely
+- [ ] Likely
+- [ ] Neutral
+- [ ] Unlikely
+- [ ] Very Unlikely
+
+---
+
+## For Long-Term Customers
+
+**1. What made you choose Mirasaki Development as a long-term partner?**
+- [ ] Consistent Quality
+- [ ] Competitive Pricing
+- [ ] Excellent Support
+- [ ] Customization Options
+- [ ] Other (please specify)
+
+**2. Which of our services do you regularly use and why?**
+- [ ] Editor / JSON Builds
+- [ ] Server Builds & Set-up
+- [ ] Custom Scripts and Mods
+- [ ] Custom Reskins
+- [ ] Discord Bots
+- [ ] Website Development
+- [ ] Monetization Services
+
+**3. What do you value most in a long-term partnership with Mirasaki Development?**  
+*(Select your top 3 options)*
+- [ ] Reliability
+- [ ] Fast Delivery
+- [ ] Creativity & Innovation
+- [ ] Personalized Service
+- [ ] Ongoing Support
+- [ ] Flexibility
+
+**4. What additional services or features would you like to see in the future?**  
+*(Your response here)*
+
+---
+
+## For Interested Customers
+
+**1. What has piqued your interest in Mirasaki Development?**
+- [ ] Custom Scripts/Mods
+- [ ] Server Builds & Set-up
+- [ ] Website Development
+- [ ] Other (please specify)
+
+**2. What are your biggest concerns when selecting a service provider?**
+- [ ] Pricing
+- [ ] Quality of Work
+- [ ] Timeline / Delivery Speed
+- [ ] Support & Communication
+- [ ] Other (please specify)
+
+**3. Have you previously used similar services from another provider?**
+- [ ] Yes
+- [ ] No
+
+**4. If yes, what could Mirasaki Development offer that would convince you to choose us over competitors?**  
+*(Your response here)*
+
+**5. What is the primary reason you have not yet purchased our services?**
+- [ ] Budget
+- [ ] Lack of information
+- [ ] Not the right timing
+- [ ] Exploring other options
+- [ ] Other (please specify)
+
+---
+
+## For Regular Customers
+
+**1. How satisfied are you with the services you have received so far?**
+- [ ] Very Satisfied
+- [ ] Satisfied
+- [ ] Neutral
+- [ ] Dissatisfied
+
+**2. Which services have you used the most?**  
+*(Please rank from most to least used)*  
+*(Your response here)*
+
+**3. What could we do to make you a long-term customer?**
+- [ ] Better pricing plans
+- [ ] More frequent communication
+- [ ] Expanded service offerings
+- [ ] Faster turnaround time
+- [ ] Other (please specify)
+
+**4. Would you be interested in a loyalty or referral program?**
+- [ ] Yes
+- [ ] No
+- [ ] Maybe (depending on the benefits)
+
+**5. What would you like to see improved in the services you’ve used so far?**  
+*(Your response here)*
+
+---
+
+## Additional Feedback (Optional)
+
+**1. What is the most important aspect of our services to you?**  
+*(e.g., Quality, Price, Turnaround Time, Customer Service, etc.)*  
+*(Your response here)*
+
+**2. What’s one thing you think we could do better?**  
+*(Your response here)*
+
+**3. Any other comments or suggestions for how we can improve?**  
+*(Your response here)*
+
+---
+
+**Thank you for your time and feedback!**  
+Your input will help us shape the future of Mirasaki Development and better serve our customers.
