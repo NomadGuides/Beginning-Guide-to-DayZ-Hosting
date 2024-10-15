@@ -1,5 +1,3 @@
-Here’s a simple feedback survey formatted in markdown to collect reviews from clients after finishing a commission for **Mirasaki Development**.
-
 ```markdown
 # Mirasaki Development Commission Feedback
 
@@ -60,5 +58,3 @@ Thank you for working with Mirasaki Development! We would love to hear your thou
 **Thank you for your feedback!**  
 We appreciate your time and look forward to working with you again.
 ```
-
-This concise survey is designed to quickly gather feedback from clients after a completed commission. It covers key areas like satisfaction, communication, and areas for improvement, while keeping things simple and easy to respond to.
